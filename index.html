@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Addition Counter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        text-align: center;
+        padding: 50px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #48392f;
+        margin-bottom: 20px;
+      }
+
+      input {
+        font-size: 16px;
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+        border: 2px solid #cbc7c4;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+
+      
+      button {
+        font-size: 20px;
+        padding: 10px 20px;
+        margin: 20px;
+        background-color: #ec6b0f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      button:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 30px;
+        color: #48392f;
+        
+      }
+
+      span#result {
+        color: #3eb50f;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1> Addition Counter</h1>
+    <input type="text" id="num1" placeholder="First number" />
+    <input type="text" id="num2" placeholder="Second number" />
+    <button id="addButton">Add</button>
+    <h2>Result: <span id="result">0</span></h2>
+
+    <script>
+      const num1Input = document.getElementById("num1");
+      const num2Input = document.getElementById("num2");
+      const resultDisplay = document.getElementById("result");
+      const addButton = document.getElementById("addButton");
+
+      addButton.addEventListener("click", function () {
+        const num1 = parseFloat(num1Input.value) || 0;
+        const num2 = parseFloat(num2Input.value) || 0;
+        const sum = num1 + num2;
+        resultDisplay.textContent = sum;
+      });
+    </script>
+  </body>
+</html>

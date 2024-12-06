@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Walking The UI/UX Line</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "poppins", sans-serif;
+        background-color: #f5f5f5;
+      }
+
+      header {
+        background-color: #f5f5f5;
+        padding: 10px;
+        text-align: center;
+        color: #333;
+        font-family: "poppins";
+      }
+
+      .logo {
+        height: 60px;
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .logo img {
+        max-width: 150px;
+        height: auto;
+      }
+
+      nav {
+        background-color: #333;
+        padding: 20px 0;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        margin: 0 30px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: "poppins";
+      }
+
+      /* Hero Section Styles */
+      #hero {
+        position: relative;
+        background-image: url(assets/Untitled-1.png);
+        background-size: cover;
+        background-position: center;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        font-family: "poppins";
+
+        color: white;
+      }
+
+      .hero-content {
+        max-width: 650px;
+        margin-left: 20%;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        font-weight: 300;
+        line-height: 1.5;
+      }
+
+      .cta-form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .cta-form input {
+        padding: 10px 15px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 30px;
+        flex: 1;
+        outline: none;
+      }
+
+      .cta-form input::placeholder {
+        color: #4b4848;
+      }
+
+      .cta-form button {
+        background-color: #d4673f;
+        stroke: #333;
+
+        color: white;
+        padding: 10px 20px;
+        border-color: #f1f1f1;
+        border-radius: 30px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: none;
+      }
+
+      .cta-form button:hover {
+        background-color: #be603e;
+      }
+
+      /* Add a subtle overlay for better text contrast */
+      #hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(51, 47, 47, 0.2);
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      nav ul li a:hover {
+        text-decoration: underline;
+      }
+
+      #articles {
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+
+      .text-center {
+        margin-top: 80px;
+
+        text-align: center;
+        color: #333;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+
+        padding-bottom: 2px;
+        justify-items: center;
+      }
+
+      .card {
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        width: 100%;
+        max-width: 800px;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      .card img {
+        height: 300px;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      .card-content {
+        padding: 30px;
+        text-align: center;
+      }
+
+      .card-content h2 {
+        margin: 10px 0;
+        color: #333;
+      }
+
+      .card-content p {
+        color: #333;
+        font-size: 14px;
+      }
+
+      #collapsible-list {
+        padding: 20px;
+        padding-bottom: 4%;
+        text-align: center;
+        background-color: #f3f3f3;
+      }
+
+      .list-container {
+        margin-top: 30px;
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .list-item {
+        text-align: left;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .list-button {
+        background: none;
+        border: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 10px;
+        width: 100%;
+        text-align: left;
+        color: #f88747;
+      }
+
+      .list-button:hover {
+        text-decoration: underline;
+      }
+
+      .list-description {
+        display: none;
+        padding: 20px 0;
+        color: #333;
+        font-size: 0.9rem;
+      }
+
+      .item-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: #f88747;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .item-link:hover {
+        text-decoration: underline;
+      }
+
+      #about-me {
+        background-color: #f3f3f3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      #about-me h2 {
+        color: #333;
+        margin-bottom: 40px;
+      }
+
+      .about-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        max-width: 600px;
+        gap: 40px;
+      }
+
+      .about-container img {
+        max-width: 180px;
+        border-radius: 50%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-content p {
+        color: #666;
+        line-height: 1.6;
+        font-size: 16px;
+      }
+
+      footer {
+        background-color: #333;
+        text-align: center;
+        padding: 10px;
+        margin-top: 20px;
+      }
+
+      footer p {
+        color: #ffffff;
+      }
+
+      footer .social-icons {
+        margin: 30px 0;
+        color: #ffffff;
+      }
+
+      footer .social-icons a {
+        margin: 0 10px;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      footer .social-icons a:hover {
+        color: #f88747;
+      }
+
+      #date-container {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 10px 10px;
+        border-radius: 30px;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+        z-index: 1000;
+      }
+
+      #join-discord {
+        background-color: #ffffff;
+
+        padding: 60px 30px;
+      }
+
+      .discord-container {
+        display: flex;
+        padding-top: 5px;
+        padding-bottom: 1px;
+        align-items: center;
+        gap: 30px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .discord-image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+      }
+
+      .discord-text {
+        flex: 1;
+      }
+
+      .discord-text h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      .discord-text h3 {
+        color: #8d8d8d;
+        font-size: 18px;
+        margin-bottom: 10px;
+        margin-top: 1%;
+      }
+
+      .discord-text p {
+        color: #333;
+        font-size: 16px;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .discord-images-container {
+        display: flex;
+        justify-content: center;
+
+        margin-top: 30px;
+        margin-bottom: 40px;
+      }
+
+      .discord-extra-image {
+        width: 900px;
+        margin-top: 2%;
+        outline: auto;
+        outline-color: #ffffff;
+
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      
+      .gallery-container {
+        margin-top: 5px;
+        margin-bottom: 100px;
+        text-align: center;
+      }
+
+      .gallery-container h3 {
+        color: #8d8d8d;
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+
+      .gallery-images {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .gallery-images img {
+        max-width: 900px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .gallery-images img:hover {
+        transform: scale(1.05);
+      }
+
+      
+      .gallery-images img:hover,
+      .discord-extra-image:hover {
+        transform: scale(1.05); 
+        transition: transform 0.3s ease-in-out; 
+      }
+
+      
+      #contact {
+        background-color: #ffffff;
+        padding-top: 20px;
+        padding-bottom: 100px;
+        text-align: center;
+      }
+
+      .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .contact-methods {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .contact-methods h3 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .contact-methods ul {
+        list-style: none;
+        padding: 0;
+        color: #666;
+        text-align: left;
+      }
+
+      .contact-methods ul li {
+        margin: 10px 0;
+        font-size: 16px;
+      }
+
+      .contact-methods ul li a {
+        color: #f88747;
+        text-decoration: none;
+      }
+
+      .contact-methods ul li a:hover {
+        text-decoration: underline;
+      }
+
+      .contact-form {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .contact-form h3 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .contact-form form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        padding: 10px 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-form button {
+        width: 455px;
+        padding: 15px;
+
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background-color: #f88747;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .contact-form button:hover {
+        background-color: #b36234;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Logo Section -->
+    <div class="logo">
+      <img src="assets/mw-logo.png" alt="Logo" />
+    </div>
+
+    <!-- Header Section -->
+    <header>
+      <h1>Walking The UI/UX Line</h1>
+    </header>
+
+    <!-- Navigation Section -->
+    <nav>
+      <ul>
+        <li><a href="#featured-articles">Articles</a></li>
+        <li><a href="#join-discord">Discord</a></li>
+        <li><a href="#about-me">About Me</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+      </ul>
+    </nav>
+
+    <!--Hero Section-->
+    <section id="hero">
+      <div class="hero-content">
+        <h1>Welcome to Walking the UI/UX Line</h1>
+        <p>
+          From my desk to your screen—sharing lessons, laughs, and late-night
+          epiphanies about design, creativity, and the UI/UX journey.
+        </p>
+        <form class="cta-form">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="featured-articles">
+      <h1 class="text-center">Featured Articles</h1>
+      <div class="grid-container">
+        <!-- Card 1 -->
+        <div class="card">
+          <div id="date-container">11/26/2024</div>
+          <img src="assets/5easetbevund1.png" alt="Article Image 1" />
+          <div class="card-content">
+            <h2>Exploring the UI of Character Customization</h2>
+            <p>
+              Cracking the code to killer character customization! In this
+              article, I reveal the must-have elements that make customization
+              fun, accessible, and irresistibly engaging.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <div id="date-container">11/26/2024</div>
+          <img src="assets/matt-painting.png" alt="Article Image 2" />
+          <div class="card-content">
+            <h2>Pixels and Pitfalls: Surviving the Junior Designer Journey</h2>
+            <p>
+              Life as a junior designer is a rollercoaster of creativity,
+              self-doubt, and aha moments. From celebrating small wins to
+              learning hard lessons, this article dives into the highs, lows,
+              and in-betweens of starting out in UX/UI.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <div id="date-container">11/26/2024</div>
+          <img src="assets/ui-trend.jpeg" alt="Article Image 3" />
+          <div class="card-content">
+            <h2>UX and UI Trends That Excite Me in 2024</h2>
+            <p>
+              From bold color palettes to AI-driven interfaces, join me as I
+              break down the hottest UX/UI trends of 2024, shaping the future of
+              user experience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Collapsible List Section -->
+    <section id="collapsible-list">
+      <h2 class="text-center">Explore More Topics</h2>
+      <div class="list-container">
+        <!-- List Item 1 -->
+        <div class="list-item">
+          <button class="list-button" onclick="toggleDescription('desc1')">
+            Customization Techniques
+          </button>
+          <div id="desc1" class="list-description">
+            Dive into the world of customization and learn the strategies that
+            create unforgettable user experiences.
+            <a href="customization.html" target="_blank" class="item-link"
+              >Learn More</a
+            >
+          </div>
+        </div>
+        <!-- List Item 2 -->
+        <div class="list-item">
+          <button class="list-button" onclick="toggleDescription('desc2')">
+            Building Accessible Designs
+          </button>
+          <div id="desc2" class="list-description">
+            Understand how to design interfaces that are inclusive and easy to
+            use for all.
+            <a href="accessibility.html" target="_blank" class="item-link"
+              >Learn More</a
+            >
+          </div>
+        </div>
+        <!-- List Item 3 -->
+        <div class="list-item">
+          <button class="list-button" onclick="toggleDescription('desc3')">
+            UI/UX Design Trends 2024
+          </button>
+          <div id="desc3" class="list-description">
+            Explore the latest trends and predictions shaping the UI/UX industry
+            this year.
+            <a href="trends.html" target="_blank" class="item-link"
+              >Learn More</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JavaScript for Collapsible List -->
+    <script>
+      function toggleDescription(id) {
+        const description = document.getElementById(id);
+        if (description.style.display === "block") {
+          description.style.display = "none";
+        } else {
+          description.style.display = "block";
+        }
+      }
+    </script>
+
+    <!--Discord Section-->
+    <section id="join-discord">
+      <div class="discord-container">
+        <img
+          src="assets/discord-logo-1-1.png"
+          alt="Join Our Discord"
+          class="discord-image"
+        />
+        <div class="discord-text">
+          <h2>Join My Discord Community</h2>
+          <h3>Ctrl + Alt + Create</h3>
+          <p>
+            Connect with fellow creatives, share your thoughts, and join
+            discussions about UI/UX design, art, and more. Be a part of our
+            growing community!
+          </p>
+        </div>
+      </div>
+      <!-- New Image Section -->
+      <div class="discord-images-container">
+        <img src="assets/computer1.png"Image 1" class="discord-extra-image" />
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about-me">
+      <h2 class="text-center">About Me</h2>
+      <div class="about-container">
+        <!-- Profile Image -->
+        <img src="assets/matt portrait.JPG" alt="Matthew Walker" />
+        <div class="about-content">
+          <!-- Intro Text -->
+          <p>
+            Hi there! I'm a passionate UI/UX Designer dedicated to crafting
+            intuitive and engaging digital experiences. With a knack for
+            problem-solving and a love for clean, accessible design, I focus on
+            creating user-centric solutions that balance functionality and
+            aesthetic appeal.
+          </p>
+          <p>
+            Over the years, I’ve honed my skills through diverse projects
+            ranging from responsive websites to mobile app interfaces. My
+            approach combines creativity with data-driven decision-making,
+            ensuring designs that resonate with users and achieve business
+            goals. I thrive in collaborative environments, enjoy brainstorming
+            fresh ideas, and always keep the end user in mind.
+          </p>
+          <p>
+            My portfolio showcases the heart of my work, featuring a gallery of
+            designs and three in-depth case studies that highlight my design
+            process, problem-solving approach, and creative solutions. From
+            responsive websites to mobile app interfaces.
+          </p>
+          <!-- Portfolio Link -->
+        </div>
+      </div>
+
+      <!-- New Image Gallery Section -->
+      <div class="gallery-container">
+        <h3 class="text-center">My Portfolio</h3>
+        <div class="gallery-images">
+          <img src="assets/Group 2.png" alt="Gallery Image 1" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="text-center">Contact Me</h2>
+      <div class="contact-container">
+        <div class="contact-methods">
+          <h3>Ways to Reach Me:</h3>
+          <ul>
+            <li>
+              Email:
+              <a href="mailto:your-email@example.com">your-email@example.com</a>
+            </li>
+            <li>
+              LinkedIn:
+              <a href="https://www.linkedin.com/in/yourprofile" target="_blank"
+                >linkedin.com/in/yourprofile</a
+              >
+            </li>
+            <li>
+              GitHub:
+              <a href="https://github.com/yourprofile" target="_blank"
+                >github.com/yourprofile</a
+              >
+            </li>
+            <li>
+              Twitter:
+              <a href="https://twitter.com/yourprofile" target="_blank"
+                >@yourprofile</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact-form">
+          <h3>Send Me a Message</h3>
+          <form action="your-server-endpoint" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+            <textarea
+              name="message"
+              rows="6"
+              placeholder="Your Message"
+              required
+            ></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Matthew Walker | All Rights Reserved</p>
+      <div class="social-icons">
+        <a href="https://twitter.com" target="_blank">Twitter</a>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="https://github.com" target="_blank">GitHub</a>
+      </div>
+    </footer>
+  </body>
+</html>
